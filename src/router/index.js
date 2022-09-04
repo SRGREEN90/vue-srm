@@ -5,55 +5,56 @@ const routes = [
   {
     path: '/',
     name: 'home',
-    component: Home
+    meta: {layout:'main'},
+    component: () => import('../views/Home')///
   },
   {
     path: '/login',
     name: 'login',
     meta: {layout:'empty'},
-    component: () => import('../views/Login')
+    component: () => import('../views/Login')///
   },
   {
     path: '/categories',
     name: 'categories',
     meta: {layout:'main'},
-    component: () => import('../views/Categories')
+    component: () => import('../views/Categories')///
   },
   {
-    path: '/detail',
+    path: '/detail/:id',
     name: 'detail',
-    meta: {layout:'detail'},
-    component: () => import('../views/Detail')
+    meta: {layout:'main'},
+    component: () => import('../views/Detail')///
   },
   {
     path: '/history',
     name: 'history',
-    meta: {layout:'history'},
+    meta: {layout:'main'},
     component: () => import('../views/History')
   },
   {
     path: '/planning',
     name: 'planning',
-    meta: {layout:'planning'},
+    meta: {layout:'main'},
     component: () => import('../views/Planning')
   },
   {
     path: '/profile',
     name: 'profile',
-    meta: {layout:'profile'},
+    meta: {layout:'main'},
     component: () => import('../views/Profile')
   },
   {
     path: '/record',
     name: 'record',
-    meta: {layout:'record'},
+    meta: {layout:'main'},
     component: () => import('../views/Record')
   },
   {
     path: '/register',
     name: 'register',
-    meta: {layout:'register'},
-    component: () => import('../views/Register')
+    meta: {layout:'empty'},
+    component: () => import('../views/Register')///
   }
 ]
 
