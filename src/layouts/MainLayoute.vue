@@ -1,12 +1,11 @@
 <template>
-  <div>
     <div class="app-main-layout">
 
-     <Navbar/>
+     <Navbar v-on:click="isOpen = !isOpen"/>
 
-     <Sidebar/>
+     <Sidebar v-model="isOpen"/>
 
-      <main class="app-content">
+      <main class="app-content" v-bind:class="{full: !isOpen}">
         <div class="app-page">
           <router-view />
         </div>
@@ -18,7 +17,6 @@
         </a>
       </div>
     </div>
-  </div>
 </template>
 
 <script>
@@ -27,7 +25,9 @@ import Sidebar from '../components/app/Sidebar'
 
 export  default {
   name: 'main-layout',
-
+  data: () => ({
+    isOpen: true
+  }),
   components: {
     Navbar, Sidebar
   }
