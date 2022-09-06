@@ -5,7 +5,7 @@
         <a href="#" @click.prevent="$emit('click')">
           <i class="material-icons black-text">dehaze</i>
         </a>
-        <span class="black-text">{{date | date}}</span>
+        <span class="black-text">{{date | date('datetime')}}</span>
       </div>
 
       <ul class="right hide-on-small-and-down">
@@ -39,18 +39,20 @@
   </nav>
 </template>
 
+
 <script>
+
 export default {
-  date: () => ({
+  data: () => ({
     date: new Date(),
     interval: null,
-    dropdown: null
-   }),
+    dropdown: null,
+  }),
   methods: {
-     logout() {
-       console.log('logoooooout')
-       this.$router.push('/login?message=logout')
-     }
+    logout() {
+      console.log('Logout')
+      this.router.push('/login?message=logout')
+    }
   },
   mounted() {
     this.interval = setInterval(() => {
@@ -62,7 +64,7 @@ export default {
   },
   beforeDestroy() {
     clearInterval(this.interval)
-    if(this.dropdown && this.dropdown.destroy) {
+    if (this.dropdown && this.dropdown.destroy) {
       this.dropdown.destroy()
     }
   }
