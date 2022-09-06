@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <component :is="layout">
+    <component v-bind:is="layout">
       <router-view/>
     </component>
 
@@ -14,7 +14,7 @@ import MainLayout from '@/layouts/MainLayout'
 export default {
   computed: {
     layout(){
-      return (this.$route.meta.layout || 'empty') + '-layout'
+      return (this.$route.meta.layout|| 'empty') + '-layout' //this.$route.meta.layout
     }
   },
   components: {
