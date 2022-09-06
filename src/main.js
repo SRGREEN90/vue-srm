@@ -17,7 +17,11 @@ import dateFilter from './filters/date.filter'
 
 // Vue.filter('date', dateFilter)
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App).use(store).use(router).mount('#app').config.globalProperties.$filters = {
+    myDateFilter(value) {
+        return '$' + dateFilter
+    }
+}
 
 
 

@@ -14,7 +14,7 @@ import MainLayout from '@/layouts/MainLayout'
 export default {
   computed: {
     layout(){
-      return (this.route.layout || 'empty') + '-layout'
+      return (this.$route.meta.layout || 'empty') + '-layout'
     }
   },
   components: {
