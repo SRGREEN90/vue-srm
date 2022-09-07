@@ -39,14 +39,15 @@
     </div>
   </form>
 </template>
-<script>
-import { useRouter } from 'vue-router';
+<script >
+import { useRoute } from 'vue-router';
 export default {
   name: 'login',
   methods: {
     submitHandler() {
-      const router = useRouter()
-      router.push()
+      const route = useRoute
+      const redirect = route.query.redirect || '/register'
+      this.$router.push(redirect)//error!!!!
     }
   }
 }
