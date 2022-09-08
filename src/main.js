@@ -1,39 +1,29 @@
-import Vue from 'vue'
-// import App from './App.vue'
-// import router from './router'
-// import store from './store'
-// import dateFilter from '@/filters/date.filter'
-import './registerServiceWorker'
-import 'materialize-css/dist/js/materialize.min'
+
+import useVuelidate from '@vuelidate/core'
+import { required, email } from '@vuelidate/validators'
 
 import { createApp } from 'vue'
 import App from './App.vue'
 import './registerServiceWorker'
 import router from './router'
 import store from './store'
-import dateFilter from './filters/date.filter'
-
-
-
-// Vue.filter('date', dateFilter)
-
-createApp(App).use(store).use(router).mount('#app').config.globalProperties.$filters = {
-    myDateFilter(value) {
-        return '$' + dateFilter
-    }
-}
+import './registerServiceWorker'
+import 'materialize-css/dist/js/materialize.min'
 
 
 
 
 
 
-// Vue.config.productionTip = false vladilen
-//
-// Vue.filter('date', dateFilter)
-//
-// new Vue({
-//   router,
-//   store,
-//   render: h => h(App)
-// }).$mount('#app')
+
+createApp(App).use(store).use(router).mount('#app')
+
+
+
+//import dateFilter from './filters/date.filter'
+//     .config.globalProperties.$filters = {
+//     myDateFilter(value) {
+//         return '$' + dateFilter
+//     }
+// }
+
