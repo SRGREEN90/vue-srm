@@ -39,15 +39,23 @@
     </div>
   </form>
 </template>
-<script >
-import { useRoute } from 'vue-router';
+<script>
+
+import {} from '@vuelidate/validators'
+
 export default {
   name: 'login',
+  data: () => ({
+    email: '',
+    password: ''
+  }),
+  validations: {
+    email: {},
+    password: {}
+  },
   methods: {
     submitHandler() {
-      const route = useRoute
-      const redirect = route.query.redirect || '/register'
-      this.$router.push(redirect)//error!!!!
+
     }
   }
 }
