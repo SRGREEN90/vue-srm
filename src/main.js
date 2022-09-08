@@ -1,6 +1,7 @@
 
 import useVuelidate from '@vuelidate/core'
 import { required, email } from '@vuelidate/validators'
+import VueCompositionAPI from '@vue/composition-api'
 
 import { createApp } from 'vue'
 import App from './App.vue'
@@ -16,7 +17,13 @@ import 'materialize-css/dist/js/materialize.min'
 
 
 
-createApp(App).use(store).use(router).mount('#app')
+createApp(App)
+    .use(store)
+    .use(router)
+    .use(VueCompositionAPI)
+    .use(Vuelidate)
+    .mount('#app')
+
 
 
 
