@@ -7,23 +7,23 @@
             id="email"
             type="text"
             v-model.trim="email"
-            :class="{invalid: ($v.email.$dirty && $v.email.required) || ($v.email.email)}"
+            :class="{invalid: (email.$dirty && email.required) || (email.email)}"
         >
         <label for="email">Email</label>
         <small
             class="helper-text invalid"
-            v-if="($v.email.$dirty && $v.email.required)"
+            v-if="(email.$dirty && email.required)"
             >Field Email should not be empty!!!</small>
         <small
             class="helper-text invalid"
-            v-else-if="($v.email.$dirty && $v.email.email)"
+            v-else-if="(email.$dirty && email.email)"
         >Enter correct email!!!</small>
       </div>
       <div class="input-field">
         <input
             id="password"
             type="password"
-            class="validate"
+            :class="{invalid: (password.$dirty && email.required) || (password.password)}"
         >
         <label for="password">Пароль</label>
         <small class="helper-text invalid">Password</small>
@@ -63,8 +63,8 @@ export default {
   },
   methods: {
     submitHandler() {
-       if(this.$v.$invalid){
-         this.$v.$touch()
+       if(this.$invalid){
+         this.$touch()
          return
        }
     }
