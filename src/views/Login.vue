@@ -10,7 +10,14 @@
             :class="{invalid: ($v.email.$dirty && $v.email.required) || ($v.email.email)}"
         >
         <label for="email">Email</label>
-        <small class="helper-text invalid">Email</small>
+        <small
+            class="helper-text invalid"
+            v-if="($v.email.$dirty && $v.email.required)"
+            >Field Email should not be empty!!!</small>
+        <small
+            class="helper-text invalid"
+            v-else-if="($v.email.$dirty && $v.email.email)"
+        >Enter correct email!!!</small>
       </div>
       <div class="input-field">
         <input
