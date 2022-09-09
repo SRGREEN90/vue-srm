@@ -75,7 +75,7 @@ export default {
   methods: {
     submitHandler() {
        if(this.$invalid){
-         this.$touch()
+         this.$touch() //most change
          return
        }
     }
