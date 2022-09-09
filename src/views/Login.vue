@@ -27,7 +27,17 @@
             :class="{invalid: (password.$dirty && password.required) || (password.minLength)}"
         >
         <label for="password">Пароль</label>
-        <small class="helper-text invalid">Password</small>
+        <small
+            class="helper-text invalid"
+            v-if="password.$dirty && password.required"
+        >Enter your password!
+        </small>
+        <small
+            class="helper-text invalid"
+            v-else-if="password.$dirty && password.minLength"
+        >
+          The password must be 6 characters, now it is {{password.length}}
+        </small>
       </div>
     </div>
     <div class="card-action">
