@@ -23,7 +23,8 @@
         <input
             id="password"
             type="password"
-            :class="{invalid: (password.$dirty && email.required) || (password.password)}"
+            v-model.trim="password"
+            :class="{invalid: (password.$dirty && password.required) || (password.minLength)}"
         >
         <label for="password">Пароль</label>
         <small class="helper-text invalid">Password</small>
