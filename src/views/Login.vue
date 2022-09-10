@@ -36,7 +36,7 @@
             class="helper-text invalid"
             v-else-if="password.$dirty && password.minLength"
         >
-          The password must be 6 characters, now it is {{password.length}}
+          The password must be {{$v.password.$params.minLength.min}} characters, now it is {{password.length}}
         </small>
       </div>
     </div>
