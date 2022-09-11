@@ -6,18 +6,38 @@
         <input
             id="email"
             type="text"
+            v-model.trim="email"
+            :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.email)}"
         >
         <label for="email">Email</label>
-        <small class="helper-text invalid">Email</small>
+        <small
+            class="helper-text invalid"
+            v-if="($v.email.$dirty && !$v.email.required)"
+        >Field Email should not be empty!!!</small>
+        <small
+            class="helper-text invalid"
+            v-else-if="($v.email.$dirty && !$v.email.email)"
+        >Enter correct email!!!</small>
       </div>
       <div class="input-field">
         <input
             id="password"
             type="password"
-            class="validate"
+            v-model.trim="password"
+            :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.minLength)}"
         >
         <label for="password">Пароль</label>
-        <small class="helper-text invalid">Password</small>
+        <small
+            class="helper-text invalid"
+            v-if="$v.password.$dirty && !$v.password.required"
+        >Enter your password!
+        </small>
+        <small
+            class="helper-text invalid"
+            v-else-if="$v.password.$dirty && !$v.password.minLength"
+        >
+          The password must be {{$v.password.$params.minLength.min}} characters, now it is {{$v.password.length}}
+        </small>
       </div>
       <div class="input-field">
         <input
@@ -48,8 +68,27 @@
 
       <p class="center">
         Уже есть аккаунт?
-        <a href="/">Войти!</a>
+        <router-link to="/login">Войти!</router-link>
       </p>
     </div>
   </form>
 </template>
+
+<script>
+import {email, minLength, required} from "@vuelidate/validators";
+export default {
+  name: 'register',
+  data: () => ({
+    email: '',
+    password: ''
+  }),
+  validations: {
+    email: {email, required},
+    password: {required, minLength: minLength(6)},
+    name: {required},
+    agree: {checked: v => v}
+  }
+}
+
+
+</script>
