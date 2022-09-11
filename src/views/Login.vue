@@ -7,16 +7,16 @@
             id="email"
             type="text"
             v-model.trim="email"
-            :class="{invalid: (email.$dirty && email.required) || (email.email)}"
+            :class="{invalid: ($v.email.$dirty && !$v.email.required) || ($v.email.email)}"
         >
         <label for="email">Email</label>
         <small
             class="helper-text invalid"
-            v-if="(email.$dirty && email.required)"
+            v-if="($v.email.$dirty && !$v.email.required)"
             >Field Email should not be empty!!!</small>
         <small
             class="helper-text invalid"
-            v-else-if="(email.$dirty && email.email)"
+            v-else-if="($v.email.$dirty && !$v.email.email)"
         >Enter correct email!!!</small>
       </div>
       <div class="input-field">
@@ -24,19 +24,19 @@
             id="password"
             type="password"
             v-model.trim="password"
-            :class="{invalid: (password.$dirty && password.required) || (password.minLength)}"
+            :class="{invalid: ($v.password.$dirty && !$v.password.required) || ($v.password.minLength)}"
         >
         <label for="password">Пароль</label>
         <small
             class="helper-text invalid"
-            v-if="password.$dirty && password.required"
+            v-if="$v.password.$dirty && !$v.password.required"
         >Enter your password!
         </small>
         <small
             class="helper-text invalid"
-            v-else-if="password.$dirty && password.minLength"
+            v-else-if="$v.password.$dirty && !$v.password.minLength"
         >
-          The password must be {{$v.password.$params.minLength.min}} characters, now it is {{password.length}}
+          The password must be {{$v.password.$params.minLength.min}} characters, now it is {{$v.password.length}}
         </small>
       </div>
     </div>
@@ -66,7 +66,9 @@ export default {
   name: 'login',
   data: () => ({
     email: '',
-    password: ''
+    password: '',
+    name: '',
+    agree: false
   }),
   validations: {
     email: {email, required},
@@ -74,9 +76,13 @@ export default {
   },
   methods: {
     submitHandler() {
-       if(this.$invalid){
-         this.$touch() //most change
+       if(this.$v.$invalid){
+         this.$v.$touch() //most change
          return
+       }
+       const formData = {
+         email: this.email,
+         password: this.password
        }
     }
   }
