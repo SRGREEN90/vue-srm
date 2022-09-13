@@ -61,7 +61,7 @@
 <script>
 
 import {email, required, minLength} from '@vuelidate/validators'
-import messages from '@utils/messages'
+import messages from '@/utils/messages'
 
 export default {
   name: 'login',
@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     submitHandler() {
-       if(this.$v.$invalid){
+       if(this.v$.$invalid){
          this.$v.$touch() //most change
          return
        }
