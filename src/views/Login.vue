@@ -7,16 +7,16 @@
             id="email"
             type="text"
             v-model.trim="email"
-            :class="{invalid: ($el.email.$dirty && !$el.email.required) || ($el.email.email)}"
+            :class="{invalid: ($emit.email.$dirty && !$emit.email.required) || ($emit.email.email)}"
         >
         <label for="email">Email</label>
         <small
             class="helper-text invalid"
-            v-if="($el.email.$dirty && !$el.email.required)"
+            v-if="($emit.email.$dirty && !$emit.email.required)"
             >Field Email should not be empty!!!</small>
         <small
             class="helper-text invalid"
-            v-else-if="($el.email.$dirty && !$el.email.email)"
+            v-else-if="($emit.email.$dirty && !$emit.email.email)"
         >Enter correct email!!!</small>
       </div>
       <div class="input-field">
@@ -24,19 +24,19 @@
             id="password"
             type="password"
             v-model.trim="password"
-            :class="{invalid: ($el.password.$dirty && !$el.password.required) || ($el.password.minLength)}"
+            :class="{invalid: ($emit.password.$dirty && !$emit.password.required) || ($emit.password.minLength)}"
         >
         <label for="password">Пароль</label>
         <small
             class="helper-text invalid"
-            v-if="$el.password.$dirty && !$el.password.required"
+            v-if="$emit.password.$dirty && !$emit.password.required"
         >Enter your password!
         </small>
         <small
             class="helper-text invalid"
-            v-else-if="$el.password.$dirty && !$el.password.minLength"
+            v-else-if="$emit.password.$dirty && !$emit.password.minLength"
         >
-          The password must be {{$el.password.$params.minLength.min}} characters, now it is {{$el.password.length}}
+          The password must be {{$emit.password.$params.minLength.min}} characters, now it is {{$emit.password.length}}
         </small>
       </div>
     </div>
@@ -82,7 +82,7 @@ export default {
   },
   methods: {
     submitHandler() {
-       if(this.$el.$invalid){
+       if(this.$emit.$invalid){
          this.$el.$touch() //most change
          return
        }
