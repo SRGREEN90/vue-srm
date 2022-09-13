@@ -82,8 +82,8 @@ export default {
   },
   methods: {
     submitHandler() {
-       if(this.v$.$invalid){
-         this.$v.$touch() //most change
+       if(this.$emit.$invalid){
+         this.$emit.$touch() //most change
          return
        }
        const formData = {
