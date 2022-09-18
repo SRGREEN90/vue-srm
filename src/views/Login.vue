@@ -83,7 +83,7 @@ export default {
   methods: {
     submitHandler() {
        if(this.$emit.$invalid){
-         this.$el.$touch() //most change
+         this.$emit.$touch() //most change
          return
        }
        const formData = {
