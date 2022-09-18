@@ -10,7 +10,9 @@ import dateFilter from '@/filters/date.filter'
 import './registerServiceWorker'
 import 'materialize-css/dist/js/materialize.min'
 
+firebase.initialize({
 
+})
 
 createApp(App)
     .filter('date', dateFilter)
