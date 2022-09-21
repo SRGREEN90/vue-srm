@@ -88,7 +88,8 @@ export default {
        }
        const formData = {
          email: this.email,
-         password: this.password
+         password: this.password,
+         name: this.name //added
        }
     }
   }
